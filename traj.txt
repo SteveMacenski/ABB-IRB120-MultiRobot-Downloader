@@ -1,0 +1,2 @@
+{joint_names: {'joint_1', 'joint_2', 'joint_3' 'joint_4' 'joint_5', 'joint_6'}, points: {positions [0.5, -0.5, 0.43, -0.459, 0.3, 0.23], velocities [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]}}, accelerations [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]}}
+{joint_names: {'joint_1', 'joint_2', 'joint_3' 'joint_4' 'joint_5', 'joint_6'}, points: {positions [0, 0, 0, 0, 0, 0], velocities [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]}}, accelerations [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]}}
