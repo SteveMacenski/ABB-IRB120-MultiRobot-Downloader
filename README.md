@@ -4,3 +4,5 @@ This repository will be a workground for a number of things to support a multi-r
 
 This repository will also act as a staging ground for my updated ABB_Drivers package which will enable 2 or more robots to interact in ROS with a single IRC5 controller. Setup instructions for how to setup multiple robots and changes to the ROS-I abb_driver will be included. 
 
+## Instructions for modification of abb_driver for multiple robots through ethernet connection to an IRC5 with additional drive modules. 
+TBA
