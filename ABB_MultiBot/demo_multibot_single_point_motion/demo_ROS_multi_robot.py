@@ -39,7 +39,7 @@ def functional(commanded_trajectory):
            msg_rosey.joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', \
                               'joint_5', 'joint_6']
 
-           traj_waypoints_gary.positions = command  # in radians
+           traj_waypoints_gary.positions = command
            
            traj_waypoints_rosey.positions = [-1*elem for elem in command]
 
