@@ -23,6 +23,7 @@ elastic_rod_experiment pkg uses all of the above packages in combination and doe
 4. Start the controller connection to the ROSmaster computer, 
 
 `roslaunch ABB_MultiBot abb_multi_robot_single_controller.launch`
+
 You should see on the flexpendant 4 connections (a stateServer and motionServer for each robot).
 
 5. Move the program pointer to the main entry function on the flexpendant.
@@ -32,6 +33,7 @@ You should see on the flexpendant 4 connections (a stateServer and motionServer 
 7. In a separate terminal, execute the ROS node, python, or C++ program. Alternatively, making a new launch file to open the node and open the robot connection would be advantageous for complex launches and additional drivers. An example: 
 
 `python demo_ROS_multi_robot.py`
+
 in the demo_multibot_multi_point_motion directory. 
 
 ## Data Structure
