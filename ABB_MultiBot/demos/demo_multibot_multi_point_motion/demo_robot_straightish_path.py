@@ -29,10 +29,10 @@ def functional(commanded_trajectory):
            traj_waypoint_1_rosey = JointTrajectoryPoint()
 
            traj_waypoint_1_gary.positions = command          
-           traj_waypoint_1_rosey.positions = [-1*elem for elem in command]
+           traj_waypoint_1_rosey.positions = [0,0,0,0,0,0]#[-1*elem for elem in command]
+           traj_waypoint_1_rosey.time_from_start = Duration(2)
 
            traj_waypoint_1_rosey.time_from_start.secs = 0 + 2*i #first move slow
-           traj_waypoint_1_gary.time_from_start.secs = 0 + 2*i
            
            #  second way to define a point
            traj_waypoint_2_gary = JointTrajectoryPoint(positions=[0,0,0,0,0,0],
@@ -41,13 +41,13 @@ def functional(commanded_trajectory):
             time_from_start = Duration(6))
            traj_waypoint_4_gary = JointTrajectoryPoint(positions=[.5,.5,.5,.5,.5,.5],
             time_from_start = Duration(8))
-           traj_waypoint_2_rosey = JointTrajectoryPoint(positions=[0,0,0,0,0,0],
+           traj_waypoint_2_rosey = JointTrajectoryPoint(positions=[.31, -.051, .33, -.55, .28, .60],
             time_from_start = Duration(4))
-           traj_waypoint_3_rosey = JointTrajectoryPoint(positions=[.4,.2,.3,.1,0,0],
+           traj_waypoint_3_rosey = JointTrajectoryPoint(positions=[.14726, -.014151, .166507, -.33571, .395997, .38657],
             time_from_start = Duration(6))
-           traj_waypoint_4_rosey = JointTrajectoryPoint(positions=[-.5,-.5,-.5,-.5,-.5,-.5],
+           traj_waypoint_4_rosey = JointTrajectoryPoint(positions=[-.09309, .003150, .003559, .16149, .524427, -.1867],
             time_from_start = Duration(8))
-           traj_waypoint_5_rosey = JointTrajectoryPoint(positions=[0,0,0,0,0,0],
+           traj_waypoint_5_rosey = JointTrajectoryPoint(positions=[-.27752, .077886, -.1828, .38563, .682589, -.44665],
             time_from_start = Duration(10))   
                                             
            #debug in terminal
@@ -80,14 +80,14 @@ def functional(commanded_trajectory):
            message_gary.goal.trajectory.points.append(traj_waypoint_2_gary)
            message_gary.goal.trajectory.points.append(traj_waypoint_3_gary)
            message_gary.goal.trajectory.points.append(traj_waypoint_4_gary)
-           message_rosey.goal.trajectory.points.append(traj_waypoint_1_rosey)
+           #message_rosey.goal.trajectory.points.append(traj_waypoint_1_rosey)
            message_rosey.goal.trajectory.points.append(traj_waypoint_2_rosey)
            message_rosey.goal.trajectory.points.append(traj_waypoint_3_rosey)
            message_rosey.goal.trajectory.points.append(traj_waypoint_4_rosey)
            message_rosey.goal.trajectory.points.append(traj_waypoint_5_rosey)
           
            #  publishing to ROS node
-           pub_gary.publish(message_gary)
+           #pub_gary.publish(message_gary)
            pub_rosey.publish(message_rosey)
          
            rate.sleep()
