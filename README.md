@@ -49,3 +49,11 @@ This includes a python ROS node meant as a quick test of your multirobot abb_dri
 ## ABB_MultiBot / Demo / Multi Straight Line
 This just moves the robot in a very roughly (not really) straight line diagonal path to test that the robot will interpolate velocities between waypoints and not simply 'stop' at the end of one point before continuing. 
 
+## RealSense Camera + April Tags Startup ROS Calls:
+This will run the drivers, give you the pose estimate from the /tag_detection_pose topic and give you visual feedback. 
+1. `roslaunch realsenseCamera_aprilTags realsense_apriltags.launch`
+2. `rostopic echo /tag_detections_pose`
+3. `rosrun image_view image_view image:=//tag_detections_image`
+
+
+

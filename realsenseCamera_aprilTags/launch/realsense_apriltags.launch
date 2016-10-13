@@ -1,0 +1,38 @@
+<launch>
+<remap from="/camera/color/image_raw" to ="/usb_cam/image_raw"/>
+
+
+<arg name="show_tag_detections" default="true"/>
+
+<!-- Real sense R200 driver -->
+<include file="$(find realsense_camera)/launch/r200_nodelet_modify_params.launch"/>
+<param name="enable_depth" value="false"/> 
+
+<!-- April Tags driver -->
+<node pkg="apriltags_ros" type="apriltag_detector_node" name="apriltag_detector" output="screen">
+
+<remap from="camera_info" to="usb_cam/camera_info"/>
+
+<remap from="image_rect" to="usb_cam/image_raw"/>
+
+<remap from ="tag_detections" to="person_tag"/>
+
+<rosparam param="tag_descriptions">[
+
+{id: 0, size: 0.163513},
+
+{id: 1, size: 0.163513, frame_id: a_frame},
+
+{id: 2, size: 0.163513},
+
+{id: 3, size: 0.163513},
+
+{id: 4, size: 0.163513},
+
+{id: 52, size: 0.163513}]
+
+</rosparam>
+
+</node>
+
+</launch>

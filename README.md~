@@ -23,7 +23,6 @@ elastic_rod_experiment pkg uses all of the above packages in combination and doe
 4. Start the controller connection to the ROSmaster computer, 
 
 `roslaunch ABB_MultiBot abb_multi_robot_single_controller.launch`
-
 You should see on the flexpendant 4 connections (a stateServer and motionServer for each robot).
 
 5. Move the program pointer to the main entry function on the flexpendant.
@@ -33,7 +32,6 @@ You should see on the flexpendant 4 connections (a stateServer and motionServer 
 7. In a separate terminal, execute the ROS node, python, or C++ program. Alternatively, making a new launch file to open the node and open the robot connection would be advantageous for complex launches and additional drivers. An example: 
 
 `python demo_ROS_multi_robot.py`
-
 in the demo_multibot_multi_point_motion directory. 
 
 ## Data Structure
@@ -50,4 +48,12 @@ This includes a python ROS node meant as a quick test of your multirobot abb_dri
 
 ## ABB_MultiBot / Demo / Multi Straight Line
 This just moves the robot in a very roughly (not really) straight line diagonal path to test that the robot will interpolate velocities between waypoints and not simply 'stop' at the end of one point before continuing. 
+
+## RealSense Camera + April Tags Startup ROS Calls:
+This will run the drivers, give you the pose estimate from the /tag_detection_pose topic and give you visual feedback. 
+1. `roslaunch realsenseCamera_aprilTags realsense_apriltags.launch`
+2. `rostopic echo /tag_detections_pose`
+3. `rosrun image_view image_view image:=//tag_detections_image`
+
+
 
