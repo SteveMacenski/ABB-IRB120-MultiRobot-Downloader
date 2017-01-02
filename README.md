@@ -1,19 +1,15 @@
-# ABB_MultiBot_Feedback_Project
+# ABB_MultiBot_Downloader
 
 This repository will be a workground for a number of things to support a multi-robot ABB IRB120 experiment. 
-A TBD force/torque sensor and visual rod segmentation work will be completed for feedback on the robots motion planner. 
 
 This repository will also act as a staging ground for my updated ABB_Drivers package which will enable 2 or more robots to interact in ROS with a single IRC5 controller. Setup instructions for how to setup multiple robots and changes to the ROS-I abb_driver will be included. Demos of code running on the ROS-I trajectory action controller are included for those wishing to not use moveit. 
 
 ABB_MultiBot pkg is for multiple robots in ROS through a IRC5 with additional drive modules. See instructions below for setup.
 
-FT_sensor_feedback pkg is for the setup and launching of the force torque sensor with gravity compensation and feedback loops for motion planning
-
-visual_feedback pkg is for the setup and launching fo the depth and RGB cameras for feedback of motion planning
-
-elastic_rod_experiment pkg uses all of the above packages in combination and does the motion planning and feedback for control over the robot manipulators with the rod. 
+elastic_rod_experiment pkg uses the above package, with visual and F/T packages elsewhere, in combination and does the motion planning and feedback for control over the robot manipulators with the rod. 
 
 ## Lab Start-Up Instructions For Twin ABB IRB120 robots without F/T or Visual Feedback
+
 1. Ensure that the ethernet connection is made between the ROSmaster computer and the IRC5 controller.
 
 2. Power on the IRC5 and accompanying additional drive module, wait for start up on the flexpendant.
@@ -34,11 +30,8 @@ You should see on the flexpendant 4 connections (a stateServer and motionServer 
 `python demo_ROS_multi_robot.py`
 in the demo_multibot_multi_point_motion directory. 
 
-## Data Structure
-TBA
-
 ## Instructions for modification of abb_driver for multiple robots through ethernet connection to an IRC5 with additional drive modules. 
-TBA, general notes: make new copies of each of the global variables stored in the ros_common.sys file for each additional robot and replace them in the copies of the motionServer.mod, stateServer.mod, and motion.mod files, also for each robot. 
+general notes: make new copies of each of the global variables stored in the ros_common.sys file for each additional robot and replace them in the copies of the motionServer.mod, stateServer.mod, and motion.mod files, also for each robot. 
 
 ## ABB_MultiBot / multi_robot_single_controller.launch
 This launch file will launch the two robots on the workstation computer. Each robot will be in its own namespace and have its own separate topics for publishing and substribing telemetry. Assumes setup of RAPID on IRC5. 
@@ -48,12 +41,6 @@ This includes a python ROS node meant as a quick test of your multirobot abb_dri
 
 ## ABB_MultiBot / Demo / Multi Straight Line
 This just moves the robot in a very roughly (not really) straight line diagonal path to test that the robot will interpolate velocities between waypoints and not simply 'stop' at the end of one point before continuing. 
-
-## RealSense Camera + April Tags Startup ROS Calls:
-This will run the drivers, give you the pose estimate from the /tag_detection_pose topic and give you visual feedback. 
-1. `roslaunch realsenseCamera_aprilTags realsense_apriltags.launch`
-2. `rostopic echo /tag_detections_pose`
-3. `rosrun image_view image_view image:=//tag_detections_image`
 
 
 
