@@ -1,0 +1,63 @@
+<!-- Launch multiple ABB robots on a irc5 controller with additional drive modules -->
+
+<launch>
+  <!-- J23 not coupled for irb120, IP address found manually -->
+  <arg name="robot_ip" default="192.168.125.1"/>
+  <arg name="J23_coupled" default="false"/> 
+  
+  <!-- ports for socket communication in TCP -->
+  <arg name="rosey_state_port" value="11002"/>
+  <arg name="rosey_motion_port" value="11000"/>
+  <arg name="gary_state_port" value="12002"/>
+  <arg name="gary_motion_port" value="12000"/> 
+
+  <!-- Robot 1 -->
+  <group ns="rosey">
+    <param name="robot_ip_address" type="str" value="$(arg robot_ip)"/>
+    
+    <param name="J23_coupled" type="bool" value="$(arg J23_coupled)"/>
+    
+    <node pkg="abb_driver"
+          type="robot_state"
+          name="robot_state">
+          <param name="port" value="$(arg rosey_state_port)"/>
+    </node>
+    
+    <node pkg="abb_driver" 
+          type="motion_download_interface"
+          name="motion_download_interface">
+          <param name="port" value="$(arg rosey_motion_port)"/>
+    </node>
+          
+    <node pkg="industrial_robot_client" 
+          type="joint_trajectory_action"
+          name="joint_trajectory_action"/>
+    
+  </group>
+
+
+  <!-- Robot 2 -->
+  <group ns="gary">
+    <param name="robot_ip_address" type="str" value="$(arg robot_ip)"/>
+    
+    <param name="J23_coupled" type="bool" value="$(arg J23_coupled)"/>
+    
+    <node pkg="abb_driver"
+          type="robot_state"
+          name="robot_state">
+          <param name="port" value="$(arg gary_state_port)"/>
+    </node>
+    
+    <node pkg="abb_driver"
+          type="motion_download_interface"
+          name="motion_download_interface">
+          <param name="port" value="$(arg gary_motion_port)"/>
+    </node>     
+          
+    <node pkg="industrial_robot_client"
+          type="joint_trajectory_action"
+          name="joint_trajectory_action"/>
+  </group>
+
+
+</launch>
