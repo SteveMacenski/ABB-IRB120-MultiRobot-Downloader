@@ -34,13 +34,8 @@ in the demo_multibot_multi_point_motion directory.
 general notes: make new copies of each of the global variables stored in the ros_common.sys file for each additional robot and replace them in the copies of the motionServer.mod, stateServer.mod, and motion.mod files, also for each robot. 
 
 ## ABB_MultiBot / multi_robot_single_controller.launch
-This launch file will launch the two robots on the workstation computer. Each robot will be in its own namespace and have its own separate topics for publishing and substribing telemetry. Assumes setup of RAPID on IRC5. 
+This launch file will launch the two robots on the workstation computer. Each robot will be in its own namespace and have its own separate topics for publishing and substribing telemetry. Assumes setup of RAPID on IRC5. See drivers folder and instructions on the ABB ROS page. 
 
 ## ABB_MultiBot / Demo / [single, Multi] MultiBot Motion
 This includes a python ROS node meant as a quick test of your multirobot abb_driver was currently installed on the IRC5 controller and the launch file is communicating with the controller. This will make the two robots complete a simple trajectory as outlined in the traj.txt file. The single will execute 1 point at a time at a fixed rate. The multi will execute multiple points in one download motion. This acts as a good first tutorial in ROS-I motion planning.
-
-## ABB_MultiBot / Demo / Multi Straight Line
-This just moves the robot in a very roughly (not really) straight line diagonal path to test that the robot will interpolate velocities between waypoints and not simply 'stop' at the end of one point before continuing. 
-
-
 
